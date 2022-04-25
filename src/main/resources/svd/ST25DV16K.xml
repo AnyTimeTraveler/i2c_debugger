@@ -1,0 +1,1566 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<peripherals>
+    <peripheral>
+        <name>ST25DV16K (System Area) (E2=1)</name>
+        <version>1.0</version>
+        <description>Dynamic NFC/RFID tag IC with 16-Kbit EEPROM, and fast transfer mode capability</description>
+        <groupName>NFC</groupName>
+        <baseAddress>0xAE</baseAddress>
+        <size>8</size>
+        <access>read-write</access>
+
+        <addressBlock>
+            <offset>0</offset>
+            <size>0x100</size>
+            <usage>registers</usage>
+        </addressBlock>
+
+        <interrupt>
+            <name>GPO</name>
+            <description>GPO interrupt</description>
+            <value>0</value>
+        </interrupt>
+
+        <registers>
+            <register>
+                <name>GPO</name>
+                <description>Enable/disable ITs on GPO</description>
+                <addressOffset>0x0000</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x80</resetValue>
+                <fields>
+                    <field>
+                        <name>RF_USER_EN</name>
+                        <bitRange>[0:0]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output level is controlled by Manage GPO Command (set/reset)</name>
+                                <description>GPO output level is controlled by Manage GPO Command (set/reset)
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_ACTIVITY_EN</name>
+                        <bitRange>[1:1]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output level changes from RF command EOF to response EOF.</name>
+                                <description>GPO output level changes from RF command EOF to response EOF.</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_INTERRUPT_EN</name>
+                        <bitRange>[2:2]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output level is controlled by Manage GPO Command (pulse).</name>
+                                <description>GPO output level is controlled by Manage GPO Command (pulse).</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>FIELD_CHANGE_EN</name>
+                        <bitRange>[3:3]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>A pulse is emitted on GPO, when RF field appears or disappears.</name>
+                                <description>A pulse is emitted on GPO, when RF field appears or disappears.
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_PUT_MSG_EN</name>
+                        <bitRange>[4:4]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>A pulse is emitted on GPO at completion of valid RF Write Message command.</name>
+                                <description>A pulse is emitted on GPO at completion of valid RF Write Message
+                                    command.
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_GET_MSG_EN</name>
+                        <bitRange>[5:5]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>A pulse is emitted on GPO at completion of valid RF Read Message command if end of
+                                    message has been reached.
+                                </name>
+                                <description>A pulse is emitted on GPO at completion of valid RF Read Message command if
+                                    end of message has been reached.
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_WRITE_EN</name>
+                        <bitRange>[6:6]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>A pulse is emitted on GPO at completion of valid RF write operation in EEPROM.
+                                </name>
+                                <description>A pulse is emitted on GPO at completion of valid RF write operation in
+                                    EEPROM.
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>GPO_EN</name>
+                        <bitRange>[7:7]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)</name>
+                                <description>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)
+                                </description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output is enabled. GPO outputs enabled interrupts.</name>
+                                <description>GPO output is enabled. GPO outputs enabled interrupts.</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>IT_TIME</name>
+                <description>Interruption pulse duration</description>
+                <addressOffset>0x0001</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <fields>
+                    <field>
+                        <name>IT_TIME</name>
+                        <description>Pulse duration = 301 us - IT_TIME x 37.65 us ± 2 us</description>
+                        <bitRange>[2:0]</bitRange>
+                        <access>read-write</access>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>EH_MODE</name>
+                <description>Energy Harvesting default strategy after Power ON</description>
+                <addressOffset>0x0002</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x01</resetValue>
+                <fields>
+                    <field>
+                        <name>EH_MODE</name>
+                        <bitRange>[0:0]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>EH forced after boot</name>
+                                <description>EH forced after boot</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>EH on demand only</name>
+                                <description>EH on demand only</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>RF_MNGT</name>
+                <description>RF interface state after Power ON</description>
+                <addressOffset>0x0003</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>RF_DISABLE</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>RF commands executed</name>
+                                <description>RF commands executed</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF commands not executed (error 0Fh returned)</name>
+                                <description>RF commands not executed (error 0Fh returned)</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_SLEEP</name>
+                        <bitRange>[1:1]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>RF communication enabled</name>
+                                <description>RF communication enabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF communication disabled (ST25DV remains silent)</name>
+                                <description>RF communication disabled (ST25DV remains silent)</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>RFA1SS</name>
+                <description>Area1 RF access protection</description>
+                <addressOffset>0x0004</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>PWD_CTRL_A1</name>
+                        <bitRange>[1:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 1 RF user security session can’t be open by password</name>
+                                <description>Area 1 RF user security session can’t be open by password</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 RF user security session is open by RF_PWD_1</name>
+                                <description>Area 1 RF user security session is open by RF_PWD_1</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 RF user security session is open by RF_PWD_2</name>
+                                <description>Area 1 RF user security session is open by RF_PWD_2</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 RF user security session is open by RF_PWD_3</name>
+                                <description>Area 1 RF user security session is open by RF_PWD_3</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A1</name>
+                        <bitRange>[3:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 1 RF access: Read always allowed / Write always allowed</name>
+                                <description>Area 1 RF access: Read always allowed / Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 RF access: Read always allowed, Write always forbidden</name>
+                                <description>Area 1 RF access: Read always allowed, Write always forbidden</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>ENDA1</name>
+                <description>
+                    Area 1 ending point
+                    End Area 1 = 8*ENDA1+7 when expressed in blocks (RF)
+                    End Area 1 = 32*ENDA1+31 when expressed in bytes (I2C)
+                </description>
+                <addressOffset>0x0005</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+            </register>
+            <register>
+                <name>RFA2SS</name>
+                <description>Area2 RF access protection</description>
+                <addressOffset>0x0006</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>PWD_CTRL_A2</name>
+                        <bitRange>[1:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 2 RF user security session can’t be open by password</name>
+                                <description>Area 2 RF user security session can’t be open by password</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 RF user security session is open by RF_PWD_1</name>
+                                <description>Area 2 RF user security session is open by RF_PWD_1</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 RF user security session is open by RF_PWD_2</name>
+                                <description>Area 2 RF user security session is open by RF_PWD_2</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 RF user security session is open by RF_PWD_3</name>
+                                <description>Area 2 RF user security session is open by RF_PWD_3</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A2</name>
+                        <bitRange>[3:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 2 RF access: Read always allowed / Write always allowed</name>
+                                <description>Area 2 RF access: Read always allowed / Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 RF access: Read always allowed, Write always forbidden</name>
+                                <description>Area 2 RF access: Read always allowed, Write always forbidden</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>ENDA2</name>
+                <description>
+                    Area 2 ending point
+                    End Area 2 = 8 x ENDA2 + 7 when expressed in blocks (RF)
+                    End Area 2 = 32*ENDA2 + 31 when expressed in bytes (I2C)
+                </description>
+                <addressOffset>0x0007</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+            </register>
+            <register>
+                <name>RFA3SS</name>
+                <description>Area3 RF access protection</description>
+                <addressOffset>0x0008</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>PWD_CTRL_A3</name>
+                        <bitRange>[1:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 3 RF user security session can’t be open by password</name>
+                                <description>Area 3 RF user security session can’t be open by password</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 RF user security session is open by RF_PWD_1</name>
+                                <description>Area 3 RF user security session is open by RF_PWD_1</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 RF user security session is open by RF_PWD_2</name>
+                                <description>Area 3 RF user security session is open by RF_PWD_2</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 RF user security session is open by RF_PWD_3</name>
+                                <description>Area 3 RF user security session is open by RF_PWD_3</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A3</name>
+                        <bitRange>[3:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 3 RF access: Read always allowed / Write always allowed</name>
+                                <description>Area 3 RF access: Read always allowed / Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 RF access: Read always allowed, Write always forbidden</name>
+                                <description>Area 3 RF access: Read always allowed, Write always forbidden</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>ENDA3</name>
+                <description>
+                    Area 3 ending point
+                    End Area 3 = 8 x ENDA3 + 7 when expressed in blocks (RF)
+                    End Area 3 = 32 x ENDA3 + 31 when expressed in bytes (I2C)
+                </description>
+                <addressOffset>0x0009</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+            </register>
+            <register>
+                <name>RFA4SS</name>
+                <description>Area4 RF access protection</description>
+                <addressOffset>0x000A</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>PWD_CTRL_A4</name>
+                        <bitRange>[1:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 4 RF user security session can’t be open by password</name>
+                                <description>Area 4 RF user security session can’t be open by password</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 RF user security session is open by RF_PWD_1</name>
+                                <description>Area 4 RF user security session is open by RF_PWD_1</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 RF user security session is open by RF_PWD_2</name>
+                                <description>Area 4 RF user security session is open by RF_PWD_2</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 RF user security session is open by RF_PWD_3</name>
+                                <description>Area 4 RF user security session is open by RF_PWD_3</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A4</name>
+                        <bitRange>[3:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 4 RF access: Read always allowed / Write always allowed</name>
+                                <description>Area 4 RF access: Read always allowed / Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</name>
+                                <description>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 RF access: Read always allowed, Write always forbidden</name>
+                                <description>Area 4 RF access: Read always allowed, Write always forbidden</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>I2CSS</name>
+                <description>Area 1 to 4 I2C access protection</description>
+                <addressOffset>0x000B</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>RW_PROTECTION_A1</name>
+                        <bitRange>[1:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 1 I2C access: Read always allowed, Write always allowed</name>
+                                <description>Area 1 I2C access: Read always allowed, Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
+                                <description>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 I2C access: Read always allowed, Write always allowed</name>
+                                <description>Area 1 I2C access: Read always allowed, Write always allowed</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
+                                <description>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A2</name>
+                        <bitRange>[3:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 2 I2C access: Read always allowed, Write always allowed</name>
+                                <description>Area 2 I2C access: Read always allowed, Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
+                                <description>Area 2 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 I2C access: Read allowed if I2C user security session is open, Write always allowed</name>
+                                <description>Area 2 I2C access: Read allowed if I2C user security session is open, Write always allowed</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 2 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</name>
+                                <description>Area 2 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A3</name>
+                        <bitRange>[5:4]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 3 I2C access: Read always allowed, Write always allowed</name>
+                                <description>Area 3 I2C access: Read always allowed, Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
+                                <description>Area 3 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 I2C access: Read allowed if I2C user security session is open, Write always allowed</name>
+                                <description>Area 3 I2C access: Read allowed if I2C user security session is open, Write always allowed</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 3 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</name>
+                                <description>Area 3 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RW_PROTECTION_A4</name>
+                        <bitRange>[7:6]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Area 4 I2C access: Read always allowed, Write always allowed</name>
+                                <description>Area 4 I2C access: Read always allowed, Write always allowed</description>
+                                <value>00</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
+                                <description>Area 4 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
+                                <value>01</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 I2C access: Read allowed if I2C user security session is open, Write always allowed</name>
+                                <description>Area 4 I2C access: Read allowed if I2C user security session is open, Write always allowed</description>
+                                <value>10</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Area 4 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</name>
+                                <description>Area 4 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</description>
+                                <value>11</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>LOCK_CCFILE</name>
+                <description>Blocks 0 and 1 RF Write protection</description>
+                <addressOffset>0x000C</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <fields>
+                    <field>
+                        <name>LCKBCK0</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Block @ 00h is not Write locked</name>
+                                <description>Block @ 00h is not Write locked</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Block @ 00h is Write locked</name>
+                                <description>Block @ 00h is Write locked</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>LCKBCK1</name>
+                        <bitRange>[1:1]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Block @ 01h is not Write locked</name>
+                                <description>Block @ 01h is not Write locked</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Block @ 01h is Write locked</name>
+                                <description>Block @ 01h is Write locked</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>MB_MODE</name>
+                <description>Fast transfer mode state after power ON</description>
+                <addressOffset>0x000D</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>MB_MODE</name>
+                        <description>Enable</description>
+                        <bitRange>[0:0]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Forbidden</name>
+                                <description>Enabling fast transfer mode is forbidden</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Authorized</name>
+                                <description>Enabling fast transfer mode is authorized</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>MB_WDG</name>
+                <description>Maximum time before the message is automatically released</description>
+                <addressOffset>0x000E</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x07</resetValue>
+                <fields>
+                    <field>
+                        <name>MB_WDG</name>
+                        <description>
+                            Watch dog duration = 2(MB_WDG-1)x30ms±6
+                            If MD_WDG = 0, then watchdog duration is infinite
+                        </description>
+                        <bitRange>[2:0]</bitRange>
+                        <access>read-write</access>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>LOCK_CFG</name>
+                <description>Protect RF Write to system configuration registers</description>
+                <addressOffset>0x000F</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <fields>
+                    <field>
+                        <name>LCK_CFG</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Configuration is unlocked</name>
+                                <description>Configuration is unlocked</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Configuration is locked</name>
+                                <description>Configuration is locked</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>LOCK_DSFID</name>
+                <description>DSFID lock status</description>
+                <addressOffset>0x0010</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+                <fields>
+                    <field>
+                        <name>LOCK_DSFID</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>DSFID is not locked</name>
+                                <description>DSFID is not locked</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>DSFID is locked</name>
+                                <description>DSFID is locked</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>LOCK_AFI</name>
+                <description>AFI lock status</description>
+                <addressOffset>0x0011</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+                <fields>
+                    <field>
+                        <name>LOCK_AFI</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>AFI is not locked</name>
+                                <description>AFI is not locked</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>AFI is locked</name>
+                                <description>AFI is locked</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>DSFID</name>
+                <description>ISO/IEC 15693 Data Storage Format Identifier</description>
+                <addressOffset>0x0012</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>AFI</name>
+                <description>ISO/IEC 15693 Application Family Identifier </description>
+                <addressOffset>0x0013</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>MEM_SIZE</name>
+                <description>Memory size value in blocks</description>
+                <addressOffset>0x0014</addressOffset>
+                <size>16</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>BLK_SIZE</name>
+                <description>Block size value in bytes</description>
+                <addressOffset>0x0016</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>IC_REF</name>
+                <description>IC reference value</description>
+                <addressOffset>0x0017</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>UID</name>
+                <description>Unique identifier</description>
+                <addressOffset>0x0018</addressOffset>
+                <size>64</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>IC_REV</name>
+                <description>IC revision</description>
+                <addressOffset>0x0020</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>Reserved</name>
+                <description>Reserved</description>
+                <addressOffset>0x0021</addressOffset>
+                <size>24</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>I2C_PWD</name>
+                <description>I2C security session password</description>
+                <addressOffset>0x0900</addressOffset>
+                <size>64</size>
+                <access>read-write</access>
+                <fields>
+                    <field>
+                        <name>Byte 7 (MSB) of password for I2C security session</name>
+                        <bitRange>[7:0]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 6 of password for I2C security session</name>
+                        <bitRange>[15:8]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 5 of password for I2C security session</name>
+                        <bitRange>[23:16]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 4 of password for I2C security session</name>
+                        <bitRange>[31:24]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 3 of password for I2C security session</name>
+                        <bitRange>[39:32]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 2 of password for I2C security session</name>
+                        <bitRange>[47:40]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 1 of password for I2C security session</name>
+                        <bitRange>[55:48]</bitRange>
+                    </field>
+                    <field>
+                        <name>Byte 0 (LSB) of password for I2C security session</name>
+                        <bitRange>[63:56]</bitRange>
+                    </field>
+                </fields>
+            </register>
+        </registers>
+    </peripheral>
+
+    <peripheral>
+        <name>ST25DV16K (User Area) (E2=0)</name>
+        <version>1.0</version>
+        <description>Dynamic NFC/RFID tag IC with 16-Kbit EEPROM, and fast transfer mode capability</description>
+        <groupName>NFC</groupName>
+        <baseAddress>0xA6</baseAddress>
+        <size>8</size>
+        <access>read-write</access>
+
+        <addressBlock>
+            <offset>0</offset>
+            <size>0x10840</size>
+            <usage>registers</usage>
+        </addressBlock>
+
+        <registers>
+            <register>
+                <name>User Memory</name>
+                <description>2K of User Memory</description>
+                <addressOffset>0x0000</addressOffset>
+                <size>16384</size>
+                <access>read-write</access>
+            </register>
+            <register>
+                <name>GPO_CTRL_Dyn</name>
+                <description>GPO control</description>
+                <addressOffset>0x2000</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <fields>
+                    <field>
+                        <name>RF_USER_EN</name>
+                        <bitRange>[0:0]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output level is controlled by Manage GPO Command (set/reset)</name>
+                                <description>GPO output level is controlled by Manage GPO Command (set/reset)
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_ACTIVITY_EN</name>
+                        <bitRange>[1:1]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output level changes from RF command EOF to response EOF</name>
+                                <description>GPO output level changes from RF command EOF to response EOF</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_INTERRUPT_EN</name>
+                        <bitRange>[2:2]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output level is controlled by Manage GPO Command (pulse)</name>
+                                <description>GPO output level is controlled by Manage GPO Command (pulse)</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>FIELD_CHANGE_EN</name>
+                        <bitRange>[3:3]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>A pulse is emitted on GPO, when RF field appears or disappears</name>
+                                <description>A pulse is emitted on GPO, when RF field appears or disappears
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_PUT_MSG_EN</name>
+                        <bitRange>[4:4]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>A pulse is emitted on GPO at completion of valid RF Write Message command</name>
+                                <description>A pulse is emitted on GPO at completion of valid RF Write Message command
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_GET_MSG_EN</name>
+                        <bitRange>[5:5]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>
+                                    A pulse is emitted on GPO at completion of valid RF Read Message command if end of
+                                    message has been reached
+                                </name>
+                                <description>
+                                    A pulse is emitted on GPO at completion of valid RF Read Message command if
+                                    end of message has been reached
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_WRITE_EN</name>
+                        <bitRange>[6:6]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>disabled</name>
+                                <description>disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>
+                                    A pulse is emitted on GPO at completion of valid RF write operation in EEPROM
+                                </name>
+                                <description>
+                                    A pulse is emitted on GPO at completion of valid RF write operation in EEPROM
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>GPO_EN</name>
+                        <bitRange>[7:7]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)</name>
+                                <description>
+                                    GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)
+                                </description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>GPO output is enabled. GPO outputs enabled interrupts.</name>
+                                <description>GPO output is enabled. GPO outputs enabled interrupts.</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>Reserved</name>
+                <description>Reserved</description>
+                <addressOffset>0x2001</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+            </register>
+            <register>
+                <name>EH_CTRL_Dyn</name>
+                <description>Energy Harvesting management and usage status</description>
+                <addressOffset>0x2002</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+                <fields>
+                    <field>
+                        <name>EH_EN</name>
+                        <bitRange>[0:0]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Disable EH feature</name>
+                                <description>Disable EH feature</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Enable EH feature</name>
+                                <description>Enable EH feature</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>EH_ON</name>
+                        <bitRange>[1:1]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>EH feature is disabled</name>
+                                <description>EH feature is disabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>EH feature is enabled</name>
+                                <description>EH feature is enabled</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>FIELD_ON</name>
+                        <bitRange>[2:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>RF field is not detected</name>
+                                <description>RF field is not detected</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF field is present and ST25DVxxx may communicate in RF</name>
+                                <description>RF field is present and ST25DVxxx may communicate in RF</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>VCC_ON</name>
+                        <bitRange>[3:3]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No DC supply detected on VCC pin or Low Power Down mode is forced (LPD is high)
+                                </name>
+                                <description>No DC supply detected on VCC pin or Low Power Down mode is forced (LPD is
+                                    high)
+                                </description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>VCC supply is present and Low Power Down mode is not forced (LPD is low)</name>
+                                <description>VCC supply is present and Low Power Down mode is not forced (LPD is low)
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>RF_MNGT_Dyn</name>
+                <description>RF interface usage management</description>
+                <addressOffset>0x2003</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <fields>
+                    <field>
+                        <name>RF_DISABLE</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>RF commands executed</name>
+                                <description>RF commands executed</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF commands not executed (error 0Fh returned)</name>
+                                <description>RF commands not executed (error 0Fh returned)</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_SLEEP</name>
+                        <bitRange>[1:1]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>RF communication enabled</name>
+                                <description>RF communication enabled</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF communication disabled (ST25DV remains silent)</name>
+                                <description>RF communication disabled (ST25DV remains silent)</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>I2C_SSO_Dyn</name>
+                <description>I2C security session status</description>
+                <addressOffset>0x2004</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+                <fields>
+                    <field>
+                        <name>I2C_SSO</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>I2C security session close</name>
+                                <description>I2C security session close</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>I2C security session open</name>
+                                <description>
+                                    I2C security session open
+                                    (Set or reset via I2C Present password command)
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>IT_STS_Dyn</name>
+                <description>Interruptions Status</description>
+                <addressOffset>0x2005</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>RF_USER</name>
+                        <bitRange>[0:0]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Manage GPO reset GPO</name>
+                                <description>Manage GPO reset GPO</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Manage GPO set GPO</name>
+                                <description>Manage GPO set GPO</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_ACTIVITY</name>
+                        <bitRange>[1:1]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No RF access</name>
+                                <description>No RF access</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF access</name>
+                                <description>RF access</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_INTERRUPT</name>
+                        <bitRange>[2:2]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No Manage GPO interrupt request</name>
+                                <description>No Manage GPO interrupt request</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Manage GPO interrupt request</name>
+                                <description>Manage GPO interrupt request</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>FIELD_FALLING</name>
+                        <bitRange>[3:3]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No RF field falling</name>
+                                <description>No RF field falling</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF Field falling</name>
+                                <description>RF Field falling</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>FIELD_RISING</name>
+                        <bitRange>[4:4]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No RF field rising</name>
+                                <description>No RF field rising</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF field rising</name>
+                                <description>RF field rising</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_PUT_MSG</name>
+                        <bitRange>[5:5]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No message put by RF in FTM mailbox</name>
+                                <description>No message put by RF in FTM mailbox</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Message put by RF in FTM mailbox</name>
+                                <description>Message put by RF in FTM mailbox</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_GET_MSG</name>
+                        <bitRange>[6:6]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No message read by RF from FTM mailbox</name>
+                                <description>No message read by RF from FTM mailbox</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Message read by RF from FTM mailbox, and end of message has been reached</name>
+                                <description>Message read by RF from FTM mailbox, and end of message has been reached
+                                </description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_WRITE</name>
+                        <bitRange>[7:7]</bitRange>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No write in EEPROM</name>
+                                <description>No write in EEPROM</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Write in EEPROM</name>
+                                <description>Write in EEPROM</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>MB_CTRL_Dyn</name>
+                <description>Fast transfer mode control and status</description>
+                <addressOffset>0x2006</addressOffset>
+                <size>8</size>
+                <access>read-write</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>MB_EN</name>
+                        <description>Enable FTM</description>
+                        <bitRange>[0:0]</bitRange>
+                        <access>read-write</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>Disable FTM</name>
+                                <description>Disable FTM, FTM mailbox is empty</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Enable FTM</name>
+                                <description>Enable FTM</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>HOST_PUT_MSG</name>
+                        <description>Indicates whether I2C has put a message in FTM mailbox</description>
+                        <bitRange>[1:1]</bitRange>
+                        <access>read-only</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No I2C message in mailbox</name>
+                                <description>No I2C message in FTM mailbox</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>I2C message in mailbox</name>
+                                <description>I2C has put a message in FTM mailbox</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_PUT_MSG</name>
+                        <description>Indicates whether RF has put a message in FTM mailbox</description>
+                        <bitRange>[2:2]</bitRange>
+                        <access>read-only</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No RF message in mailbox</name>
+                                <description>No RF message in FTM mailbox</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>RF message in mailbox</name>
+                                <description>RF has put message in FTM mailbox</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>HOST_MISS_MSG</name>
+                        <description>Indicates whether I2C has missed an RF message in FTM mailbox</description>
+                        <bitRange>[4:4]</bitRange>
+                        <access>read-only</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No message missed by I2C</name>
+                                <description>No message missed by I2C</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Message missed by I2C</name>
+                                <description>I2C did not read RF message before watchdog time out</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_MISS_MSG</name>
+                        <description>Indicates whether RF has missed an I2C message in FTM mailbox</description>
+                        <bitRange>[5:5]</bitRange>
+                        <access>read-only</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No message missed by RF</name>
+                                <description>No message missed by RF</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Message missed by RF</name>
+                                <description>RF did not read message before watchdog time out</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>HOST_CURRENT_MSG</name>
+                        <description>Indicates whether I2C has put a message in the FTM mailbox</description>
+                        <bitRange>[6:6]</bitRange>
+                        <access>read-only</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No message or message not coming from I2C</name>
+                                <description>No message or message not coming from I2C</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Message in mailbox comes from I2C</name>
+                                <description>Current Message in FTM mailbox comes from I2C</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                    <field>
+                        <name>RF_CURRENT_MSG</name>
+                        <description>Indicates whether RF has put a message in the FTM mailbox</description>
+                        <bitRange>[7:7]</bitRange>
+                        <access>read-only</access>
+                        <enumeratedValues>
+                            <enumeratedValue>
+                                <name>No message or message not coming from RF</name>
+                                <description>No message or message not coming from RF</description>
+                                <value>0</value>
+                            </enumeratedValue>
+                            <enumeratedValue>
+                                <name>Message in mailbox comes from RF</name>
+                                <description>Current Message in FTM mailbox comes from RF</description>
+                                <value>1</value>
+                            </enumeratedValue>
+                        </enumeratedValues>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>MB_LEN_Dyn</name>
+                <description>length of fast transfer mode message</description>
+                <addressOffset>0x2007</addressOffset>
+                <size>8</size>
+                <access>read-only</access>
+                <resetValue>0x00</resetValue>
+                <fields>
+                    <field>
+                        <name>MB_LEN</name>
+                        <description>
+                            Size in byte, minus 1 byte, of message contained in FTM
+                            mailbox (automatically set by ST25DVxxx)
+                        </description>
+                        <bitRange>[7:0]</bitRange>
+                        <access>read-only</access>
+                    </field>
+                </fields>
+            </register>
+            <register>
+                <name>MB_Dyn</name>
+                <description>Fast transfer mode buffer (256-Bytes)</description>
+                <addressOffset>0x2008</addressOffset>
+                <size>2048</size>
+                <access>read-write</access>
+            </register>
+        </registers>
+    </peripheral>
+</peripherals>
