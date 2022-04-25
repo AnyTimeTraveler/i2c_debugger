@@ -1,0 +1,122 @@
+ST25 docs to registers
+
+([\da-fA-F]+h|No access|N/A) (RW|RO|WO) ([^ ]+) (.+) E2=1 (.+)h (RW|RO|WO)
+
+<register>
+    <name>$3</name>
+    <description>$4</description>
+    <addressOffset>0x$5</addressOffset>
+    <size>8</size>
+    <access>$6 todo:read-write</access>
+</register>
+
+
+
+
+R/W todo\:read\-write
+
+read\-write
+
+
+
+b(\d) ([^\n]+)\n\W+(\d): ([^\n]+)\n\W+(\d): ([^\n]+)\n
+
+<field>
+    <name>$2</name>
+    <description></description>
+    <bitRange>[$1:$1]</bitRange>
+    <access>read-only</access>
+    <enumeratedValues>
+        <enumeratedValue>
+            <name></name>
+            <description>$4</description>
+            <value>$3</value>
+        </enumeratedValue>
+        <enumeratedValue>
+            <name></name>
+            <description>$6</description>
+            <value>$5</value>
+        </enumeratedValue>
+    </enumeratedValues>
+</field>
+
+
+
+
+ +b(\d) (.*)
+ +0: (.*)
+ +1: (.*)
+ +(\d)b
+
+<field>
+    <name>$2</name>
+    <bitRange>[$1:$1]</bitRange>
+    <enumeratedValues>
+        <enumeratedValue>
+            <name>$3</name>
+            <description>$3</description>
+            <value>0</value>
+        </enumeratedValue>
+        <enumeratedValue>
+            <name>$4</name>
+            <description>$4</description>
+            <value>1</value>
+        </enumeratedValue>
+    </enumeratedValues>
+</field>
+
+
+ +(\d\d): (.*)$
+
+<enumeratedValue>
+    <name>$3</name>
+    <description>$3</description>
+    <value>0</value>
+</enumeratedValue>
+
+
+
+
+ +b(\d)-b(\d) (.*)
+
+ <field>
+     <name>$3</name>
+     <bitRange>[$1:$2]</bitRange>
+     <enumeratedValues>
+
+
+
+
+ +(\d\d)b
+
+    </enumeratedValues>
+</field>
+
+
+
+
+ +b(\d) (.*) 0: (.*)
+ +1: (.*) (\d)b
+
+ <field>
+     <name>$2</name>
+     <bitRange>[$1:$1]</bitRange>
+     <enumeratedValues>
+         <enumeratedValue>
+             <name>$3</name>
+             <description>$3</description>
+             <value>0</value>
+         </enumeratedValue>
+         <enumeratedValue>
+             <name>$4</name>
+             <description>$4</description>
+             <value>1</value>
+         </enumeratedValue>
+     </enumeratedValues>
+ </field>
+
+
+  <field>
+      <name>$2</name>
+      <bitRange>[$1:$1]</bitRange>
+  </field>
