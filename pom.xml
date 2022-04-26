@@ -14,11 +14,16 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.fazecast/jSerialComm -->
         <dependency>
             <groupId>com.fazecast</groupId>
             <artifactId>jSerialComm</artifactId>
             <version>2.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.11.1</version>
+        </dependency>
     </dependencies>
-
 </project>

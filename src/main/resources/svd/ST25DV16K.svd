@@ -7,21 +7,7 @@
         <description>Dynamic NFC/RFID tag IC with 16-Kbit EEPROM, and fast transfer mode capability</description>
         <groupName>NFC</groupName>
         <baseAddress>0xAE</baseAddress>
-        <size>8</size>
         <access>read-write</access>
-
-        <addressBlock>
-            <offset>0</offset>
-            <size>0x100</size>
-            <usage>registers</usage>
-        </addressBlock>
-
-        <interrupt>
-            <name>GPO</name>
-            <description>GPO interrupt</description>
-            <value>0</value>
-        </interrupt>
-
         <registers>
             <register>
                 <name>GPO</name>
@@ -280,22 +266,22 @@
                             <enumeratedValue>
                                 <name>Area 1 RF user security session can’t be open by password</name>
                                 <description>Area 1 RF user security session can’t be open by password</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 RF user security session is open by RF_PWD_1</name>
                                 <description>Area 1 RF user security session is open by RF_PWD_1</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 RF user security session is open by RF_PWD_2</name>
                                 <description>Area 1 RF user security session is open by RF_PWD_2</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 RF user security session is open by RF_PWD_3</name>
                                 <description>Area 1 RF user security session is open by RF_PWD_3</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -306,22 +292,22 @@
                             <enumeratedValue>
                                 <name>Area 1 RF access: Read always allowed / Write always allowed</name>
                                 <description>Area 1 RF access: Read always allowed / Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 1 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 RF access: Read always allowed, Write always forbidden</name>
                                 <description>Area 1 RF access: Read always allowed, Write always forbidden</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -353,22 +339,22 @@
                             <enumeratedValue>
                                 <name>Area 2 RF user security session can’t be open by password</name>
                                 <description>Area 2 RF user security session can’t be open by password</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 RF user security session is open by RF_PWD_1</name>
                                 <description>Area 2 RF user security session is open by RF_PWD_1</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 RF user security session is open by RF_PWD_2</name>
                                 <description>Area 2 RF user security session is open by RF_PWD_2</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 RF user security session is open by RF_PWD_3</name>
                                 <description>Area 2 RF user security session is open by RF_PWD_3</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -379,22 +365,22 @@
                             <enumeratedValue>
                                 <name>Area 2 RF access: Read always allowed / Write always allowed</name>
                                 <description>Area 2 RF access: Read always allowed / Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 2 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 RF access: Read always allowed, Write always forbidden</name>
                                 <description>Area 2 RF access: Read always allowed, Write always forbidden</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -426,22 +412,22 @@
                             <enumeratedValue>
                                 <name>Area 3 RF user security session can’t be open by password</name>
                                 <description>Area 3 RF user security session can’t be open by password</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 RF user security session is open by RF_PWD_1</name>
                                 <description>Area 3 RF user security session is open by RF_PWD_1</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 RF user security session is open by RF_PWD_2</name>
                                 <description>Area 3 RF user security session is open by RF_PWD_2</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 RF user security session is open by RF_PWD_3</name>
                                 <description>Area 3 RF user security session is open by RF_PWD_3</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -452,22 +438,22 @@
                             <enumeratedValue>
                                 <name>Area 3 RF access: Read always allowed / Write always allowed</name>
                                 <description>Area 3 RF access: Read always allowed / Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 3 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 RF access: Read always allowed, Write always forbidden</name>
                                 <description>Area 3 RF access: Read always allowed, Write always forbidden</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -499,22 +485,22 @@
                             <enumeratedValue>
                                 <name>Area 4 RF user security session can’t be open by password</name>
                                 <description>Area 4 RF user security session can’t be open by password</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 RF user security session is open by RF_PWD_1</name>
                                 <description>Area 4 RF user security session is open by RF_PWD_1</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 RF user security session is open by RF_PWD_2</name>
                                 <description>Area 4 RF user security session is open by RF_PWD_2</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 RF user security session is open by RF_PWD_3</name>
                                 <description>Area 4 RF user security session is open by RF_PWD_3</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -525,22 +511,22 @@
                             <enumeratedValue>
                                 <name>Area 4 RF access: Read always allowed / Write always allowed</name>
                                 <description>Area 4 RF access: Read always allowed / Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</name>
                                 <description>Area 4 RF access: Read always allowed, Write allowed if RF user security session is open</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 RF access: Read always allowed, Write always forbidden</name>
                                 <description>Area 4 RF access: Read always allowed, Write always forbidden</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -561,22 +547,22 @@
                             <enumeratedValue>
                                 <name>Area 1 I2C access: Read always allowed, Write always allowed</name>
                                 <description>Area 1 I2C access: Read always allowed, Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
                                 <description>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 I2C access: Read always allowed, Write always allowed</name>
                                 <description>Area 1 I2C access: Read always allowed, Write always allowed</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
                                 <description>Area 1 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -587,22 +573,22 @@
                             <enumeratedValue>
                                 <name>Area 2 I2C access: Read always allowed, Write always allowed</name>
                                 <description>Area 2 I2C access: Read always allowed, Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
                                 <description>Area 2 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 I2C access: Read allowed if I2C user security session is open, Write always allowed</name>
                                 <description>Area 2 I2C access: Read allowed if I2C user security session is open, Write always allowed</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 2 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</name>
                                 <description>Area 2 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -613,22 +599,22 @@
                             <enumeratedValue>
                                 <name>Area 3 I2C access: Read always allowed, Write always allowed</name>
                                 <description>Area 3 I2C access: Read always allowed, Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
                                 <description>Area 3 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 I2C access: Read allowed if I2C user security session is open, Write always allowed</name>
                                 <description>Area 3 I2C access: Read allowed if I2C user security session is open, Write always allowed</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 3 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</name>
                                 <description>Area 3 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -639,22 +625,22 @@
                             <enumeratedValue>
                                 <name>Area 4 I2C access: Read always allowed, Write always allowed</name>
                                 <description>Area 4 I2C access: Read always allowed, Write always allowed</description>
-                                <value>00</value>
+                                <value>0b00</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 I2C access: Read always allowed, Write allowed if I2C user security session is open</name>
                                 <description>Area 4 I2C access: Read always allowed, Write allowed if I2C user security session is open</description>
-                                <value>01</value>
+                                <value>0b01</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 I2C access: Read allowed if I2C user security session is open, Write always allowed</name>
                                 <description>Area 4 I2C access: Read allowed if I2C user security session is open, Write always allowed</description>
-                                <value>10</value>
+                                <value>0b10</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Area 4 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</name>
                                 <description>Area 4 I2C access: Read allowed if I2C security session is open, Write allowed if I2C security session is open</description>
-                                <value>11</value>
+                                <value>0b11</value>
                             </enumeratedValue>
                         </enumeratedValues>
                     </field>
@@ -929,15 +915,7 @@
         <description>Dynamic NFC/RFID tag IC with 16-Kbit EEPROM, and fast transfer mode capability</description>
         <groupName>NFC</groupName>
         <baseAddress>0xA6</baseAddress>
-        <size>8</size>
         <access>read-write</access>
-
-        <addressBlock>
-            <offset>0</offset>
-            <size>0x10840</size>
-            <usage>registers</usage>
-        </addressBlock>
-
         <registers>
             <register>
                 <name>User Memory</name>
