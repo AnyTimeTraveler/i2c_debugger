@@ -105,7 +105,7 @@ public class Gui extends JFrame {
             OutputStream os = serialPort.getOutputStream();
             try {
                 if ("Read".equals(rwList.getSelectedItem())) {
-                    new ReadCommand((byte) Integer.parseInt(addressField.getText(), 16), Integer.parseInt(dataField.getText())).send(os);
+                    new ReadCommand(true, (byte) Integer.parseInt(addressField.getText(), 16), Integer.parseInt(dataField.getText())).send(os);
                 } else {
                     byte[] data = new byte[dataField.getText().length() / 2];
                     for (int i = 0; i < data.length; i += 2) {
@@ -115,7 +115,7 @@ public class Gui extends JFrame {
                             data[i] = (byte) Integer.parseInt(hexByte, 16);
                         }
                     }
-                    new WriteCommand((byte) Integer.parseInt(addressField.getText(), 16), data).send(os);
+                    new WriteCommand(true, (byte) Integer.parseInt(addressField.getText(), 16), data).send(os);
                 }
                 os.flush();
             } catch (IOException e) {
@@ -124,15 +124,21 @@ public class Gui extends JFrame {
         });
 
         scanButton.addActionListener(ignored -> {
-            for (int i = 1; i < 254; i++) {
+            Thread thread = new Thread(() -> {
                 OutputStream os = serialPort.getOutputStream();
-                try {
-                    new ReadCommand((byte) i, 1).send(os);
-                    os.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                for (int i = 1; i < 0x7F; i++) {
+//            for (int i = 1; i < 10; i++) {
+                    try {
+                        new WriteCommand(true, (byte) i, new byte[0]).send(os);
+                        Thread.sleep(50);
+                    } catch (IOException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
+            });
+            thread.setDaemon(true);
+            thread.start();
+            System.out.println("Scanning...");
         });
 
 
@@ -172,6 +178,7 @@ public class Gui extends JFrame {
     private void connect() {
         // attempt to connect to the serial port
         serialPort = SerialPort.getCommPort(Objects.requireNonNull(portList.getSelectedItem()).toString());
+        serialPort.setBaudRate(115200);
         serialPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
         if (serialPort.openPort()) {
             connectButton.setText("Disconnect");

@@ -17,7 +17,7 @@ public class Peripheral {
 
     @Override
     public String toString() {
-        return "Peripheral{" +
+        return "\n\tPeripheral{" +
                 "name='" + name + '\'' +
                 ", version='" + version + '\'' +
                 ", description='" + description + '\'' +
@@ -25,6 +25,6 @@ public class Peripheral {
                 ", baseAddress=" + baseAddress +
                 ", access=" + access +
                 ", registers=" + registers +
-                "}\n";
+                "}";
     }
 }

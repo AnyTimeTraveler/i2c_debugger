@@ -29,8 +29,7 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>GPO output level is controlled by Manage GPO Command (set/reset)</name>
-                                <description>GPO output level is controlled by Manage GPO Command (set/reset)
-                                </description>
+                                <description>GPO output level is controlled by Manage GPO Command (set/reset)</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -81,8 +80,7 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>A pulse is emitted on GPO, when RF field appears or disappears.</name>
-                                <description>A pulse is emitted on GPO, when RF field appears or disappears.
-                                </description>
+                                <description>A pulse is emitted on GPO, when RF field appears or disappears.</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -100,8 +98,7 @@
                             <enumeratedValue>
                                 <name>A pulse is emitted on GPO at completion of valid RF Write Message command.</name>
                                 <description>A pulse is emitted on GPO at completion of valid RF Write Message
-                                    command.
-                                </description>
+                                    command.</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -118,11 +115,9 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>A pulse is emitted on GPO at completion of valid RF Read Message command if end of
-                                    message has been reached.
-                                </name>
+                                    message has been reached.</name>
                                 <description>A pulse is emitted on GPO at completion of valid RF Read Message command if
-                                    end of message has been reached.
-                                </description>
+                                    end of message has been reached.</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -138,11 +133,9 @@
                                 <value>0</value>
                             </enumeratedValue>
                             <enumeratedValue>
-                                <name>A pulse is emitted on GPO at completion of valid RF write operation in EEPROM.
-                                </name>
+                                <name>A pulse is emitted on GPO at completion of valid RF write operation in EEPROM.</name>
                                 <description>A pulse is emitted on GPO at completion of valid RF write operation in
-                                    EEPROM.
-                                </description>
+                                    EEPROM.</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -154,8 +147,7 @@
                         <enumeratedValues>
                             <enumeratedValue>
                                 <name>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)</name>
-                                <description>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)
-                                </description>
+                                <description>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)</description>
                                 <value>0</value>
                             </enumeratedValue>
                             <enumeratedValue>
@@ -318,8 +310,7 @@
                 <description>
                     Area 1 ending point
                     End Area 1 = 8*ENDA1+7 when expressed in blocks (RF)
-                    End Area 1 = 32*ENDA1+31 when expressed in bytes (I2C)
-                </description>
+                    End Area 1 = 32*ENDA1+31 when expressed in bytes (I2C)</description>
                 <addressOffset>0x0005</addressOffset>
                 <size>8</size>
                 <access>read-write</access>
@@ -391,8 +382,7 @@
                 <description>
                     Area 2 ending point
                     End Area 2 = 8 x ENDA2 + 7 when expressed in blocks (RF)
-                    End Area 2 = 32*ENDA2 + 31 when expressed in bytes (I2C)
-                </description>
+                    End Area 2 = 32*ENDA2 + 31 when expressed in bytes (I2C)</description>
                 <addressOffset>0x0007</addressOffset>
                 <size>8</size>
                 <access>read-write</access>
@@ -464,8 +454,7 @@
                 <description>
                     Area 3 ending point
                     End Area 3 = 8 x ENDA3 + 7 when expressed in blocks (RF)
-                    End Area 3 = 32 x ENDA3 + 31 when expressed in bytes (I2C)
-                </description>
+                    End Area 3 = 32 x ENDA3 + 31 when expressed in bytes (I2C)</description>
                 <addressOffset>0x0009</addressOffset>
                 <size>8</size>
                 <access>read-write</access>
@@ -727,8 +716,7 @@
                         <name>MB_WDG</name>
                         <description>
                             Watch dog duration = 2(MB_WDG-1)x30ms±6
-                            If MD_WDG = 0, then watchdog duration is infinite
-                        </description>
+                            If MD_WDG = 0, then watchdog duration is infinite</description>
                         <bitRange>[2:0]</bitRange>
                         <access>read-write</access>
                     </field>
@@ -818,7 +806,7 @@
             </register>
             <register>
                 <name>AFI</name>
-                <description>ISO/IEC 15693 Application Family Identifier </description>
+                <description>ISO/IEC 15693 Application Family Identifier</description>
                 <addressOffset>0x0013</addressOffset>
                 <size>8</size>
                 <access>read-only</access>
@@ -943,8 +931,7 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>GPO output level is controlled by Manage GPO Command (set/reset)</name>
-                                <description>GPO output level is controlled by Manage GPO Command (set/reset)
-                                </description>
+                                <description>GPO output level is controlled by Manage GPO Command (set/reset)</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -995,8 +982,7 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>A pulse is emitted on GPO, when RF field appears or disappears</name>
-                                <description>A pulse is emitted on GPO, when RF field appears or disappears
-                                </description>
+                                <description>A pulse is emitted on GPO, when RF field appears or disappears</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1013,8 +999,7 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>A pulse is emitted on GPO at completion of valid RF Write Message command</name>
-                                <description>A pulse is emitted on GPO at completion of valid RF Write Message command
-                                </description>
+                                <description>A pulse is emitted on GPO at completion of valid RF Write Message command</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1032,12 +1017,10 @@
                             <enumeratedValue>
                                 <name>
                                     A pulse is emitted on GPO at completion of valid RF Read Message command if end of
-                                    message has been reached
-                                </name>
+                                    message has been reached</name>
                                 <description>
                                     A pulse is emitted on GPO at completion of valid RF Read Message command if
-                                    end of message has been reached
-                                </description>
+                                    end of message has been reached</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1054,11 +1037,9 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>
-                                    A pulse is emitted on GPO at completion of valid RF write operation in EEPROM
-                                </name>
+                                    A pulse is emitted on GPO at completion of valid RF write operation in EEPROM</name>
                                 <description>
-                                    A pulse is emitted on GPO at completion of valid RF write operation in EEPROM
-                                </description>
+                                    A pulse is emitted on GPO at completion of valid RF write operation in EEPROM</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1071,8 +1052,7 @@
                             <enumeratedValue>
                                 <name>GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)</name>
                                 <description>
-                                    GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)
-                                </description>
+                                    GPO output is disabled. GPO is High-Z (open drain) or 0 (CMOS)</description>
                                 <value>0</value>
                             </enumeratedValue>
                             <enumeratedValue>
@@ -1152,17 +1132,14 @@
                         <bitRange>[3:3]</bitRange>
                         <enumeratedValues>
                             <enumeratedValue>
-                                <name>No DC supply detected on VCC pin or Low Power Down mode is forced (LPD is high)
-                                </name>
+                                <name>No DC supply detected on VCC pin or Low Power Down mode is forced (LPD is high)</name>
                                 <description>No DC supply detected on VCC pin or Low Power Down mode is forced (LPD is
-                                    high)
-                                </description>
+                                    high)</description>
                                 <value>0</value>
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>VCC supply is present and Low Power Down mode is not forced (LPD is low)</name>
-                                <description>VCC supply is present and Low Power Down mode is not forced (LPD is low)
-                                </description>
+                                <description>VCC supply is present and Low Power Down mode is not forced (LPD is low)</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1230,8 +1207,7 @@
                                 <name>I2C security session open</name>
                                 <description>
                                     I2C security session open
-                                    (Set or reset via I2C Present password command)
-                                </description>
+                                    (Set or reset via I2C Present password command)</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1353,8 +1329,7 @@
                             </enumeratedValue>
                             <enumeratedValue>
                                 <name>Message read by RF from FTM mailbox, and end of message has been reached</name>
-                                <description>Message read by RF from FTM mailbox, and end of message has been reached
-                                </description>
+                                <description>Message read by RF from FTM mailbox, and end of message has been reached</description>
                                 <value>1</value>
                             </enumeratedValue>
                         </enumeratedValues>
@@ -1525,8 +1500,7 @@
                         <name>MB_LEN</name>
                         <description>
                             Size in byte, minus 1 byte, of message contained in FTM
-                            mailbox (automatically set by ST25DVxxx)
-                        </description>
+                            mailbox (automatically set by ST25DVxxx)</description>
                         <bitRange>[7:0]</bitRange>
                         <access>read-only</access>
                     </field>

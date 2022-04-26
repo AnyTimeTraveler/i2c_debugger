@@ -25,7 +25,15 @@ public class ResponseReader extends Thread implements AutoCloseable {
             try {
                 int stx = is.read();
                 if (stx != STX) {
-                    System.err.printf("ResponseReader: Skipping unexpected byte: %02X\n", stx);
+                    System.err.printf("ResponseReader: Skipping unexpected byte: %02X", stx);
+                    if (!Character.isISOControl(stx)) {
+                        System.err.printf(" '%c'", stx);
+                    } else if (stx == '\n') {
+                        System.err.print(" '\\n'");
+                    } else if (stx == '\r') {
+                        System.err.print(" '\\r'");
+                    }
+                    System.err.println();
                     continue;
                 }
                 Response response = new Response(is);
