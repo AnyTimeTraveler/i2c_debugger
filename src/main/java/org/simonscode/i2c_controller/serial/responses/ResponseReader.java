@@ -1,13 +1,13 @@
-package org.simonscode.i2c_controller;
+package org.simonscode.i2c_controller.serial.responses;
 
-import org.simonscode.i2c_controller.responses.Response;
+import org.simonscode.i2c_controller.gui.AppendLogLine;
 
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.DataFormatException;
 
-import static org.simonscode.i2c_controller.Gui.STX;
+import static org.simonscode.i2c_controller.gui.GUI.STX;
 
 public class ResponseReader extends Thread implements AutoCloseable {
     private final InputStream is;
@@ -38,7 +38,7 @@ public class ResponseReader extends Thread implements AutoCloseable {
                 }
                 Response response = new Response(is);
                 EventQueue eventQueue = Toolkit.getDefaultToolkit().getSystemEventQueue();
-                eventQueue.postEvent(new AppendLogLine(response.toString()));
+                eventQueue.postEvent(new AppendLogLine(response));
             } catch (IOException e) {
                 closed = true;
             } catch (DataFormatException e) {

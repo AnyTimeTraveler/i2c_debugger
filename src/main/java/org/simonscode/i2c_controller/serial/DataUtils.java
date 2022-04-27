@@ -1,4 +1,4 @@
-package org.simonscode.i2c_controller;
+package org.simonscode.i2c_controller.serial;
 
 import java.io.IOException;
 import java.io.InputStream;

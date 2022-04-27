@@ -1,4 +1,4 @@
-package org.simonscode.i2c_controller.responses;
+package org.simonscode.i2c_controller.serial.responses;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,10 +6,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.zip.DataFormatException;
 
-import static org.simonscode.i2c_controller.DataUtils.readLength;
-import static org.simonscode.i2c_controller.Flags.FLAGS_SEND_STOP;
-import static org.simonscode.i2c_controller.Gui.ETX;
-import static org.simonscode.i2c_controller.responses.ResponseType.*;
+import static org.simonscode.i2c_controller.serial.DataUtils.readLength;
+import static org.simonscode.i2c_controller.serial.Flags.FLAGS_SEND_STOP;
+import static org.simonscode.i2c_controller.gui.GUI.ETX;
 
 public class Response {
 
@@ -22,18 +21,18 @@ public class Response {
     public Response(InputStream is) throws DataFormatException, IOException {
         int read = is.read();
         type = switch (read) {
-            case 'w' -> WRITE;
-            case 'r' -> READ;
-            case 'd' -> DEBUG;
-            case 'e' -> ERROR;
+            case 'w' -> ResponseType.WRITE;
+            case 'r' -> ResponseType.READ;
+            case 'd' -> ResponseType.DEBUG;
+            case 'e' -> ResponseType.ERROR;
             default -> throw new DataFormatException("Unexpected value for type: " + read);
         };
 
-        if (type == ERROR) {
+        if (type == ResponseType.ERROR) {
             address = 0;
             status = "error";
             sendStop = false;
-        } else if (type == DEBUG) {
+        } else if (type == ResponseType.DEBUG) {
             address = 0;
             status = "debug";
             sendStop = false;
@@ -90,7 +89,7 @@ public class Response {
         sb.append("Response{");
         sb.append("type=");
         sb.append(type);
-        if (type == READ || type == WRITE) {
+        if (type == ResponseType.READ || type == ResponseType.WRITE) {
             sb.append(", address=0x");
             if (address < 0x10) {
                 sb.append('0');

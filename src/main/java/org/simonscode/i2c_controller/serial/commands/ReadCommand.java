@@ -1,11 +1,11 @@
-package org.simonscode.i2c_controller.commands;
+package org.simonscode.i2c_controller.serial.commands;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
-import static org.simonscode.i2c_controller.Flags.FLAGS_SEND_STOP;
-import static org.simonscode.i2c_controller.Gui.ETX;
-import static org.simonscode.i2c_controller.Gui.STX;
+import static org.simonscode.i2c_controller.serial.Flags.FLAGS_SEND_STOP;
+import static org.simonscode.i2c_controller.gui.GUI.ETX;
+import static org.simonscode.i2c_controller.gui.GUI.STX;
 
 public record ReadCommand(boolean sendStop, byte address, int length) {
 

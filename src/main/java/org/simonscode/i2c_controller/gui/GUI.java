@@ -1,48 +1,46 @@
-package org.simonscode.i2c_controller;
+package org.simonscode.i2c_controller.gui;
 
 import java.awt.*;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.text.ParseException;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fazecast.jSerialComm.SerialPort;
-import org.simonscode.i2c_controller.commands.ReadCommand;
-import org.simonscode.i2c_controller.commands.WriteCommand;
+import org.simonscode.i2c_controller.serial.responses.ResponseReader;
+import org.simonscode.i2c_controller.serial.commands.ReadCommand;
+import org.simonscode.i2c_controller.serial.commands.WriteCommand;
+import org.simonscode.i2c_controller.svd.Chip;
+import org.simonscode.i2c_controller.svd.Peripheral;
+import org.simonscode.i2c_controller.svd.Register;
 
-public class Gui extends JFrame {
+import static org.simonscode.i2c_controller.gui.GuiUtils.leftJustify;
+
+public class GUI extends JFrame {
 
     public static final byte STX = 0x02;
     public static final byte ETX = 0x03;
+    private final DefaultListModel<String> deviceListModel;
     private SerialPort serialPort;
     private final JButton connectButton;
     private final JComboBox<String> portList;
     private final JTextArea logArea;
     private ResponseReader responseReader;
-    private static final Gui instance;
+    private static GUI instance;
 
-    static {
+    public static void start() {
         try {
-            instance = new Gui();
+            instance = new GUI();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+        instance.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
-                 IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        SwingUtilities.invokeLater(() -> instance.setVisible(true));
-    }
-
-    public Gui() throws HeadlessException, ParseException {
+    public GUI() throws HeadlessException, ParseException, IOException {
         super("I2C Controller");
         enableEvents(AppendLogLine.EVENT_ID);
         setSize(600, 400);
@@ -62,7 +60,37 @@ public class Gui extends JFrame {
 
         logArea = new JTextArea();
         logArea.setEditable(false);
-        add(new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
+//        add(new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
+
+        JPanel registerList = new JPanel();
+        registerList.setLayout(new BoxLayout(registerList, BoxLayout.Y_AXIS));
+
+        XmlMapper mapper = new XmlMapper();
+        File svdFile = new File("/home/simon/projects/i2c_controller/src/main/resources/svd/ST25DV16K.svd");
+        Chip chip = mapper.readValue(svdFile, Chip.class);
+        chip.init();
+        chip.filename = svdFile.getName();
+
+        for (Peripheral peripheral : chip.peripheral) {
+            for (Register register : peripheral.registers) {
+                registerList.add(leftJustify(new RegisterPanel(register)));
+            }
+        }
+        JScrollPane scrollRegisterList = new JScrollPane(registerList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//        add(scrollRegisterList, BorderLayout.CENTER);
+
+        deviceListModel = new DefaultListModel<>();
+        JList<String> deviceList = new JList<>(deviceListModel);
+        JScrollPane scrollDeviceList = new JScrollPane(deviceList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+        JTree tree = new JTree(chip);
+
+        JScrollPane scrollTree = new JScrollPane(tree, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//        add(scrollTree, BorderLayout.WEST);
+
+        JSplitPane splitPaneRight = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollRegisterList, scrollDeviceList);
+        JSplitPane splitPaneLeft = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollTree, splitPaneRight);
+        add(splitPaneLeft, BorderLayout.CENTER);
 
         JPanel paramsPanel = new JPanel();
         paramsPanel.add(new JLabel("ADDR:"));
@@ -124,21 +152,23 @@ public class Gui extends JFrame {
         });
 
         scanButton.addActionListener(ignored -> {
+            deviceListModel.addElement("Starting scan...");
             Thread thread = new Thread(() -> {
                 OutputStream os = serialPort.getOutputStream();
                 for (int i = 1; i < 0x7F; i++) {
 //            for (int i = 1; i < 10; i++) {
                     try {
                         new WriteCommand(true, (byte) i, new byte[0]).send(os);
-                        Thread.sleep(50);
+                        Thread.sleep(25);
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                deviceListModel.addElement("Completed scan!");
             });
             thread.setDaemon(true);
             thread.start();
-            System.out.println("Scanning...");
+
         });
 
 
@@ -167,8 +197,11 @@ public class Gui extends JFrame {
         if (event.getID() == AppendLogLine.EVENT_ID) {
             AppendLogLine ev = (AppendLogLine) event;
             System.out.println(ev.getLine());
-            logArea.append(ev.getLine() + '\n');
+            logArea.append(ev.getLine().toString() + '\n');
             logArea.setCaretPosition(logArea.getText().length());
+            if (ev.getLine().getStatus().equals("success")) {
+                deviceListModel.addElement("0x" + Integer.toHexString(ev.getLine().getAddress()).toUpperCase() + " : Device responded!");
+            }
         } else // other events go to the system default process event handler
         {
             super.processEvent(event);
@@ -202,7 +235,7 @@ public class Gui extends JFrame {
         connectButton.setText("Connect");
     }
 
-    public static Gui getInstance() {
+    public static GUI getInstance() {
         return instance;
     }
 }
