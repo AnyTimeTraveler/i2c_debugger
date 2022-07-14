@@ -1,5 +1,7 @@
 package org.simonscode.i2c_controller.gui;
 
+import org.simonscode.i2c_controller.serial.commands.ReadCommand;
+import org.simonscode.i2c_controller.serial.commands.WriteCommand;
 import org.simonscode.i2c_controller.svd.Field;
 import org.simonscode.i2c_controller.svd.Register;
 
@@ -7,6 +9,8 @@ import javax.swing.*;
 import javax.swing.text.DefaultFormatter;
 import javax.swing.text.DefaultFormatterFactory;
 import java.awt.*;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.ParseException;
 
 import static org.simonscode.i2c_controller.gui.GuiUtils.leftJustify;
@@ -14,18 +18,20 @@ import static org.simonscode.i2c_controller.gui.GuiUtils.leftJustify;
 public class RegisterPanel extends JPanel {
     public RegisterPanel(Register register) {
         super();
-        setMaximumSize(new Dimension(500,10000));
+        setMaximumSize(new Dimension(500, 10000));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(BorderFactory.createTitledBorder(register.name));
-        add(leftJustify(new JLabel("0x" + Integer.toHexString(register.addressOffsetInBytes).toUpperCase() + " : " + register.description)));
+        setBorder(BorderFactory.createTitledBorder("0x" + Integer.toHexString(register.addressOffsetInBytes).toUpperCase() + " : " + register.name));
+        add(leftJustify(new JLabel(register.description)));
+        JButton readButton = new JButton("Read");
+        JButton writeButton = new JButton("Write");
         if (register.fields != null && !register.fields.isEmpty()) {
             JPanel fieldsPanel = new JPanel();
-            fieldsPanel.setLayout(new BoxLayout(fieldsPanel,BoxLayout.Y_AXIS));
+            fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.Y_AXIS));
             for (Field field : register.fields) {
                 fieldsPanel.add(new FieldPanel(field));
             }
             add(fieldsPanel);
-            add(new JButton("Read"));
+            add(readButton);
         } else {
             int max = (int) (Math.pow(2, register.sizeInBits) - 1);
             JSpinner spinner = new JSpinner(new SpinnerNumberModel(0, 0, max, 1));
@@ -33,9 +39,19 @@ public class RegisterPanel extends JPanel {
             JSpinner.DefaultEditor editor = (JSpinner.DefaultEditor) spinner.getEditor();
             JFormattedTextField tf = editor.getTextField();
             tf.setFormatterFactory(new MyFormatterFactory(String.valueOf(max).length()));
-            add(new JButton("Read"));
-            add(new JButton("Write"));
+            add(readButton);
+            writeButton.addActionListener(ignored -> {
+                byte[] bytes = new byte[register.getSizeInBytes()];
+                for (int i = 0; i < register.getSizeInBytes(); i++) {
+
+                }
+                new WriteCommand(true, register.getSizeInBytes(), bytes);
+            });
+            add(writeButton);
         }
+        readButton.addActionListener(ignored -> {
+            new ReadCommand(true, register.addressOffsetInBytes, register.getSizeInBytes());
+        });
     }
 
     private static class MyFormatterFactory extends DefaultFormatterFactory {
@@ -59,7 +75,7 @@ public class RegisterPanel extends JPanel {
 
         public Object stringToValue(String text) throws ParseException {
             try {
-                return Integer.valueOf(text, 16);
+                return Integer.valueOf(text.substring(2), 16);
             } catch (NumberFormatException nfe) {
                 throw new ParseException(text, 0);
             }

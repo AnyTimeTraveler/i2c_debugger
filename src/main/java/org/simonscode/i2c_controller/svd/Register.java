@@ -51,6 +51,10 @@ public class Register implements TreeNode {
         this.resetValue = resetValue.trim();
     }
 
+    public int getSizeInBytes() {
+        return (sizeInBits / 8) + (sizeInBits % 8 > 0 ? 1 : 0);
+    }
+
     @Override
     public String toString() {
         // TODO: Align this to same leading zeros

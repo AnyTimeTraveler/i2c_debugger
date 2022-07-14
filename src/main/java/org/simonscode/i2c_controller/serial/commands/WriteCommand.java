@@ -7,7 +7,7 @@ import static org.simonscode.i2c_controller.serial.Flags.FLAGS_SEND_STOP;
 import static org.simonscode.i2c_controller.gui.GUI.ETX;
 import static org.simonscode.i2c_controller.gui.GUI.STX;
 
-public record WriteCommand(boolean sendStop, byte address, byte[] data) {
+public record WriteCommand(boolean sendStop, int address, byte[] data) {
 
     public void send(OutputStream os) throws IOException {
         int flags = 0;
